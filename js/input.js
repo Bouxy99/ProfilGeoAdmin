@@ -22,6 +22,7 @@ function resetProfil() {
     // Vider la carte
     list_coord = [];
     vectorLine.clear();
+    draw_line.abortDrawing()
 };
 
 // Afficher plus d'element du tableau d'informations du profil

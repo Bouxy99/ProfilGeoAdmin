@@ -2,7 +2,6 @@
 let list_coord = [];
 let geom_json = {};
 let liste_profil = [];
-let vectorLine = new ol.source.Vector({});
 let profil_generate = false;
 let table_more_info = false;
 let long_reli = 0;

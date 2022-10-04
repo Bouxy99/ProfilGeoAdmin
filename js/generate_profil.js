@@ -65,7 +65,7 @@ function processProfilData(profil) {
         name: 'MNT',
         mode: 'lines+markers',
         line: {
-            color: 'rgb(80, 173, 81)',
+            color: '#ff0000',
             width: 2
         },
         marker: {

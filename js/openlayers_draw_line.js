@@ -10,17 +10,7 @@ map.on('click', function (evt) {
     });
 
     // Creation de la couche representant la ligne
-    vectorLine = new ol.source.Vector({});
     vectorLine.addFeature(featureLine);
-    let vectorLineLayer = new ol.layer.Vector({
-        source: vectorLine,
-        style: new ol.style.Style({
-            fill: new ol.style.Fill({ color: '#eb4034', weight: 4 }),
-            stroke: new ol.style.Stroke({ color: '#eb4034', width: 4 })
-        })
-    });
-    // Ajout a la carte
-    map.addLayer(vectorLineLayer);
 
     // Creation de la geometrie GeoJSON de la ligne pour utilisation dans l'API
     geom_json = new ol.format.GeoJSON().writeGeometry(line_profil, {
@@ -33,3 +23,15 @@ map.on('click', function (evt) {
         $("#btn_generate_profil").addClass("btn-success")
     };
 });
+
+// Permet d'afficher le profil avant de le cliquer
+let draw_line = new ol.interaction.Draw({
+    type: "LineString",
+    style: style_profil,
+});
+let draw_point = new ol.interaction.Draw({
+    type: "Point",
+    style: style_profil_pt,
+});
+map.addInteraction(draw_line);
+map.addInteraction(draw_point);
