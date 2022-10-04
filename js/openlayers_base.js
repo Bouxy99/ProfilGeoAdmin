@@ -69,11 +69,17 @@ const vectorLineLayer = new ol.layer.Vector({
   source: vectorLine,
   style: style_profil
 });
+// definition du point overlay du profil
+const vectorPoint = new ol.source.Vector({});
+const vectorPointLayer = new ol.layer.Vector({
+  source: vectorPoint,
+  style: style_profil_pt
+});
 
 let liste_basemaps = [carte_nationale, orthophoto, MO_nb]
 // creation de la carte
 const map = new ol.Map({
   target: "map",
-  layers: [carte_nationale, vectorLineLayer],
+  layers: [carte_nationale, vectorLineLayer, vectorPointLayer],
   view: view
 });

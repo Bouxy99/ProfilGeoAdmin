@@ -6,7 +6,7 @@ function updateNbPoints(input) {
 // Reinitialiser le profil et la carte
 function resetProfil() {
     // Vider le profil
-    $("#profil").html("");
+    $("#profil").hide();
     $('#apres_gen_profil').hide();
 
     // Empecher l'export CSV
@@ -22,6 +22,7 @@ function resetProfil() {
     // Vider la carte
     list_coord = [];
     vectorLine.clear();
+    vectorPoint.clear();
     draw_line.abortDrawing()
 };
 

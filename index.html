@@ -24,7 +24,7 @@
     </div>
 
     <!-- Carte -->
-    <p style="color: red;">Dessiner une ligne sur la carte ci-dessous. Double clic pour la terminer.</p>
+    <p style="color: red;">Dessiner une ligne sur la carte ci-dessous. Double clic pour la terminer, puis générer le profil.</p>
     <div id="map"></div>
 
     <!-- Outils -->
@@ -59,7 +59,7 @@
     <div class="m-4">
       <ul class="nav nav-tabs" id="myTab">
         <li class="nav-item">
-          <a href="#tab_profil" class="nav-link active" data-bs-toggle="tab">Profil</a>
+          <a href="#tab_profil" class="nav-link active" data-bs-toggle="tab" onclick="generateProfil()">Profil</a>
         </li>
         <li class="nav-item">
           <a href="#tab_info" class="nav-link" data-bs-toggle="tab">Informations</a>
@@ -149,7 +149,8 @@
 <script src="./js/openlayers_base.js"></script>
 <script src="./js/openlayers_basemaps.js"></script>
 <script src="./js/openlayers_draw_line.js"></script>
-<script src="./js/generate_profil.js"></script>
+<script src="./js/profil_generate.js"></script>
+<script src="./js/profil_hover.js"></script>
 <script src="./js/export_csv.js"></script>
 
 </html>
