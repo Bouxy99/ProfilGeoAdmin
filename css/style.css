@@ -17,3 +17,25 @@
 .titre {
     font-size: 75px;
 }
+
+.table_info_profil {
+    position: relative;
+    margin-top: 25px;
+    width: 80%;
+    left: 10%;
+}
+
+.avant_gen_profil {
+    position: relative;
+    left: 5%;
+    top : 15px;
+}
+
+.btn_table {
+    position: relative;
+    left: 11%;
+}
+
+#profil {
+    width: 100%;
+}

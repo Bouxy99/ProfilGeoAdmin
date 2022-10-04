@@ -35,6 +35,24 @@ function processProfilData(profil) {
         mnt_y.push(pt.alts.DTM25)
     });
 
+    // Calcul de la longueur et recherche de la plus forte pente
+    long_reli = 0;
+    pente_max_p = 0;
+    pente_max_deg = 0;
+    for (let i of Object.keys(mnt_x)) {
+        if (i > 0) {
+            let diff_x = mnt_x[i]-mnt_x[i-1];
+            let diff_y = mnt_y[i]-mnt_y[i-1];
+            let long = Math.sqrt(Math.pow(diff_x, 2) + Math.pow(diff_y, 2));
+            long_reli += long;
+            // Test de la pente
+            if (Math.abs(pente_max_p) < ((diff_y/diff_x)*100)) {
+                pente_max_p = ((diff_y/diff_x)*100);
+                pente_max_deg = (180 * Math.atan(diff_y/diff_x) / Math.PI);
+            }
+        };
+    };
+
     // Recherches du points min et max pour un meilleur ajustement de la vue du graphique
     let min_y = Math.min.apply(null, mnt_y);
     let max_y = Math.max.apply(null, mnt_y);
@@ -71,5 +89,27 @@ function processProfilData(profil) {
             range: [min_y-diff_y*0.2, max_y+diff_y*0.2]
         }
     };
+
+    // Ajout des informations dans le tableau
+    let long_plan = mnt_x.at(-1);
+    let denivele = (mnt_y.at(-1)-mnt_y[0]);
+    let pente_moy_p = ((denivele/long_plan)*100);
+    let pente_moy_deg = (180 * Math.atan(denivele/long_plan) / Math.PI);
+
+    $('#long_reli').text(`${long_reli.toFixed(1)} m`);
+    $('#long_plan').text(`${long_plan} m`);
+    $('#alti_dep').text(`${mnt_y[0]} m`);
+    $('#alti_arr').text(`${mnt_y.at(-1)} m`);
+    $('#denivele').text(`${denivele.toFixed(1)} m`);
+    $('#pente_moy').text(`${pente_moy_p.toFixed(1)} % | ${pente_moy_deg.toFixed(1)} °`);
+    $('#alti_min').text(`${min_y} m`);
+    $('#alti_max').text(`${max_y} m`);
+    $('#pente_max').text(`${pente_max_p.toFixed(1)} % | ${pente_max_deg.toFixed(1)} °`);
+
+    $('#apres_gen_profil').show();
+
+    // Supprimer le text (Pas de profil genere)
+    $('.avant_gen_profil').hide();
+
     return [data,layout]
 }

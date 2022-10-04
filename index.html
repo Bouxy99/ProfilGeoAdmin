@@ -38,15 +38,15 @@
         </div>
       </div>
       <div class="btn-group mx-2">
-        <button type="button" class="btn btn-secondary" aria-haspopup="true" aria-expanded="false" id="btn_generate_profil"
-          onclick="generateProfil()">Générer le profil</button>
+        <button type="button" class="btn btn-secondary" aria-haspopup="true" aria-expanded="false"
+          id="btn_generate_profil" onclick="generateProfil()">Générer le profil</button>
       </div>
       <div class="btn-group mx-2">
         <button type="button" class="btn btn-danger" aria-haspopup="true" aria-expanded="false"
           onclick="resetProfil()"><i class="fa fa-refresh"></i></button>
       </div>
       <label style="margin-left: 25px;" for="nb_points">Nombre de points : </label>
-      <input type="number" min="10" max="5000" value="200" step="1" class="form-control mx-2" id="nb_points"
+      <input type="number" min="10" max="5000" value="100" step="10" class="form-control mx-2" id="nb_points"
         oninput="updateNbPoints(this)">
       <div class="btn-group mx-2">
         <button type="button" class="btn btn-secondary" aria-haspopup="true" aria-expanded="false" id="btn_export_csv"
@@ -54,8 +54,71 @@
       </div>
     </div>
 
-    <!-- Profil -->
-    <div id='profil'></div>
+    <!-- Profil et informations -->
+    <div class="m-4">
+      <ul class="nav nav-tabs" id="myTab">
+        <li class="nav-item">
+          <a href="#tab_profil" class="nav-link active" data-bs-toggle="tab">Profil</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab_info" class="nav-link" data-bs-toggle="tab">Informations</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="tab_profil">
+          <h5 class="mt-2 avant_gen_profil">Pas de profil généré</h5>
+          <!-- Profil -->
+          <div id='profil'></div>
+        </div>
+        <div class="tab-pane fade" id="tab_info">
+          <h5 class="mt-2 avant_gen_profil">Pas de profil généré</h5>
+          <div id="apres_gen_profil" style="display: none;">
+            <table class="table table-striped table-group mx-2 table_info_profil">
+              <tbody>
+                <tr>
+                  <th scope="row">Longueur suivant le relief</th>
+                  <td id="long_reli">-</td>
+                </tr>
+                <tr>
+                  <th scope="row">Longueur planimétrique</th>
+                  <td id="long_plan">-</td>
+                </tr>
+                <tr>
+                  <th scope="row">Altitude de départ</th>
+                  <td id="alti_dep">-</td>
+                </tr>
+                <tr>
+                  <th scope="row">Altitude d'arrivé</th>
+                  <td id="alti_arr">-</td>
+                </tr>
+                <tr>
+                  <th scope="row">Dénivelé</th>
+                  <td id="denivele">-</td>
+                </tr>
+                <tr>
+                  <th scope="row">Pente moyenne</th>
+                  <td id="pente_moy">-</td>
+                </tr>
+                <tr class="row_plus" style="display: none;">
+                  <th scope="row">Altitude minimum</th>
+                  <td id="alti_min">-</td>
+                </tr>
+                <tr class="row_plus" style="display: none;">
+                  <th scope="row">Altitude maximum</th>
+                  <td id="alti_max">-</td>
+                </tr>
+                <tr class="row_plus" style="display: none;">
+                  <th scope="row">Pente maximum</th>
+                  <td id="pente_max">-</td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" class="btn btn-primary btn_table" aria-haspopup="true" aria-expanded="false"
+              id="btn_show_more" onclick="showMore()">Montrer plus</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Copyright -->
     <div class="mb-3 bottom_page"> Icônes par <a href="https://www.freepik.com" title="Freepik">Freepik</a> sur <a
@@ -66,10 +129,13 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap et Popper -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
   integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <!-- Lien vers la librairie Proj4JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.js"
   integrity="sha512-cgJnZ1VX2G0MAN4C5OGShwI3zHhfQ6RLriXuukhblNu+T082/ZRGoWLP/0xMKObvB6AUKdnm27hQKj8hKZPjXA=="

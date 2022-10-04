@@ -7,6 +7,7 @@ function updateNbPoints(input) {
 function resetProfil() {
     // Vider le profil
     $("#profil").html("");
+    $('#apres_gen_profil').hide();
 
     // Empecher l'export CSV
     profil_generate = false;
@@ -15,7 +16,23 @@ function resetProfil() {
     $("#btn_generate_profil").removeClass("btn-success")
     $("#btn_generate_profil").addClass("btn-secondary")
 
+    // Ajouter le text (Pas de profil genere)
+    $('.avant_gen_profil').show();
+
     // Vider la carte
     list_coord = [];
     vectorLine.clear();
+};
+
+// Afficher plus d'element du tableau d'informations du profil
+function showMore() {
+    if (!table_more_info) {
+        $('.row_plus').show();
+        table_more_info = true;
+        $("#btn_show_more").html("Montrer moins");
+    } else {
+        $('.row_plus').hide();
+        table_more_info = false;
+        $("#btn_show_more").html("Montrer plus");
+    }
 };
