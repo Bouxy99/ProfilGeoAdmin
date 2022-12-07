@@ -1,5 +1,5 @@
 // Affichage d'un point sur la carte lorsque la souris est sur le graphique
-myPlot.on('plotly_hover', function(_,data){
+myPlot.on('plotly_hover', function (_, data) {
 
     // Recuperation des donnees du profil
     x = data.points[0].x;

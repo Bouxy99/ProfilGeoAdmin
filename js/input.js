@@ -15,15 +15,14 @@ function resetProfil() {
     $("#btn_export_csv").addClass("btn-secondary")
     $("#btn_generate_profil").removeClass("btn-success")
     $("#btn_generate_profil").addClass("btn-secondary")
+    $("#btn_save_profil").removeClass("btn-success")
+    $("#btn_save_profil").addClass("btn-secondary")
 
     // Ajouter le text (Pas de profil genere)
     $('.avant_gen_profil').show();
 
     // Vider la carte
-    list_coord = [];
-    vectorLine.clear();
-    vectorPoint.clear();
-    draw_line.abortDrawing()
+    clearMap();
 };
 
 // Afficher plus d'element du tableau d'informations du profil

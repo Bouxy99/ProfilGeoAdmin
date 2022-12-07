@@ -53,6 +53,10 @@
         <button type="button" class="btn btn-secondary" aria-haspopup="true" aria-expanded="false" id="btn_export_csv"
           onclick="CSVExport()"><i class="fa fa-download"></i> | CSV</button>
       </div>
+      <div class="btn-group mx-2">
+        <button type="button" class="btn btn-secondary" aria-haspopup="true" aria-expanded="false" id="btn_save_profil"
+          onclick="saveProfil()"><i class="fa fa-save"></i></button>
+      </div>
     </div>
 
     <!-- Profil et informations -->
@@ -63,6 +67,9 @@
         </li>
         <li class="nav-item">
           <a href="#tab_info" class="nav-link" data-bs-toggle="tab">Informations</a>
+        </li>
+        <li class="nav-item">
+          <a href="#tab_save" class="nav-link" data-bs-toggle="tab">Enregistrements</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -118,6 +125,22 @@
               id="btn_show_more" onclick="showMore()">Montrer plus</button>
           </div>
         </div>
+        <div class="tab-pane fade" id="tab_save">
+          <h5 class="mt-2 avant_save_profil">Pas de profil enregistré</h5>
+          <div id="apres_save_profil" style="display: none;">
+            <table class="table table-striped table-group mx-2 table_info_profil" id="table_profil_save">
+              <thead>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Longueur</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody id="tbody_profil_save">
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -151,6 +174,8 @@
 <script src="./js/openlayers_draw_line.js"></script>
 <script src="./js/profil_generate.js"></script>
 <script src="./js/profil_hover.js"></script>
+<script src="./js/profil_save.js"></script>
 <script src="./js/export_csv.js"></script>
+<script src="./js/localstorage.js"></script>
 
 </html>

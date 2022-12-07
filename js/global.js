@@ -4,10 +4,13 @@ let geom_json = {};
 let liste_profil = [];
 let profil_generate = false;
 let table_more_info = false;
+let long_plan = 0;
 let long_reli = 0;
 let pente_max_p = 0;
 let pente_max_deg = 0;
 let dict_pt = {};
+
+let dict_ProfilGeoAdmin = {}
 
 // Generer un profil vide
 let layout = {};

@@ -83,3 +83,11 @@ const map = new ol.Map({
   layers: [carte_nationale, vectorLineLayer, vectorPointLayer],
   view: view
 });
+
+// Vider la carte
+function clearMap() {
+  list_coord = [];
+  vectorLine.clear();
+  vectorPoint.clear();
+  draw_line.abortDrawing();
+};

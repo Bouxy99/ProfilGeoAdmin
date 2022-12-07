@@ -1,11 +1,22 @@
-// action à effectuer lors du clic sur la carte
+// Action à effectuer lors du clic sur la carte
 map.on('click', function (evt) {
     // Supression de la ligne precedente
     vectorLine.clear();
     // Ajout de la nouvelle ligne
     list_coord.push(evt.coordinate);
-    let line_profil = new ol.geom.LineString(list_coord);
-    let featureLine = new ol.Feature({
+    drawLineMap(list_coord);
+
+    // Changer style bouton generer profil
+    if (list_coord.length > 1) {
+        $("#btn_generate_profil").removeClass("btn-secondary")
+        $("#btn_generate_profil").addClass("btn-success")
+    };
+});
+
+// Fonction d'affichage de la ligne sur la carte
+function drawLineMap(list) {
+    line_profil = new ol.geom.LineString(list);
+    featureLine = new ol.Feature({
         geometry: line_profil
     });
 
@@ -16,13 +27,8 @@ map.on('click', function (evt) {
     geom_json = new ol.format.GeoJSON().writeGeometry(line_profil, {
         dataProjection: 'EPSG:2056', featureProjection: 'EPSG:2056', decimals: 3
     });
-
-    // Changer style bouton generer profil
-    if (list_coord.length > 1) {
-        $("#btn_generate_profil").removeClass("btn-secondary")
-        $("#btn_generate_profil").addClass("btn-success")
-    };
-});
+    geom_json = JSON.parse(geom_json);
+};
 
 // Permet d'afficher le profil avant de le cliquer
 let draw_line = new ol.interaction.Draw({

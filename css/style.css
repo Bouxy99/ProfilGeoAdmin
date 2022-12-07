@@ -25,7 +25,7 @@
     left: 10%;
 }
 
-.avant_gen_profil {
+.avant_gen_profil, .avant_save_profil {
     position: relative;
     left: 5%;
     top : 15px;

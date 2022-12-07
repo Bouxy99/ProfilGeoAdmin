@@ -3,7 +3,7 @@ function generateProfil() {
     // Creer le profil si au minimum deux points
     if (list_coord.length > 1) {
         // Creer l'url avec les variables definies
-        let url = `https://api3.geo.admin.ch/rest/services/profile.json?geom=${geom_json}&sr=2056&nb_points=${nb_points}`;
+        let url = `https://api3.geo.admin.ch/rest/services/profile.json?geom=${JSON.stringify(geom_json)}&sr=2056&nb_points=${nb_points}`;
 
         // Execution de la requete a l'API
         let xmlHttp = new XMLHttpRequest();
@@ -20,6 +20,10 @@ function generateProfil() {
         profil_generate = true
         $("#btn_export_csv").removeClass("btn-secondary")
         $("#btn_export_csv").addClass("btn-primary")
+
+        // Permet l'enregistrement du profil
+        $("#btn_save_profil").removeClass("btn-secondary")
+        $("#btn_save_profil").addClass("btn-primary")
     };
 };
 
@@ -32,7 +36,7 @@ function processProfilData(profil) {
     profil.forEach(function (pt) {
         mnt_x.push(pt.dist);
         mnt_y.push(pt.alts.DTM25);
-        dict_pt[pt.dist] = {'easting':pt.easting, 'northing':pt.northing};
+        dict_pt[pt.dist] = { 'easting': pt.easting, 'northing': pt.northing };
     });
 
     // Calcul de la longueur et recherche de la plus forte pente
@@ -65,20 +69,25 @@ function processProfilData(profil) {
         mode: 'lines+markers', marker: { size: 4 },
         line: { color: '#ff0000', width: 2 },
         fill: 'tozeroy'
-        
-    }],
+
+    }];
+
     layout = {
         hovermode: 'x unified',
         title: 'Profil altimétrique du terrain - swissALTI3D ©swisstopo',
-        xaxis: { title: 'Distance [m]', showgrid: false, zeroline: false, hovertemplate: 'A',},
+        xaxis: { title: 'Distance [m]', showgrid: false, zeroline: false, hovertemplate: 'A', },
         yaxis: { title: 'Altitude [m]', showline: false, range: [min_y - diff_y * 0.2, max_y + diff_y * 0.2] }
     };
-        
-    Plotly.newPlot('profil', data, layout);
+
+    config = {
+        modeBarButtonsToRemove: ['select2d','lasso2d','autoScale2d','zoomIn2d','zoomOut2d']
+    };
+
+    Plotly.newPlot('profil', data, layout,config);
     myPlot = $('#profil');
 
     // Ajout des informations dans le tableau
-    let long_plan = mnt_x.at(-1);
+    long_plan = mnt_x.at(-1);
     let denivele = (mnt_y.at(-1) - mnt_y[0]);
     let pente_moy_p = ((denivele / long_plan) * 100);
     let pente_moy_deg = (180 * Math.atan(denivele / long_plan) / Math.PI);
