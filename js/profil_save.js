@@ -38,7 +38,7 @@ function updateListProfil() {
 
         // Supprimer le text (Pas de profil enregistré)
         $('#apres_save_profil').show();
-        $('.avant_save_profil').hide();
+        $('#avant_save_profil').hide();
 
     };
 };
