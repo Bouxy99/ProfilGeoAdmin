@@ -21,3 +21,9 @@ $('#profil').hide();
 
 // Recuperer les valeurs definies dans HTML
 let nb_points = parseFloat($('#nb_points').val());
+
+// Définition des couleurs de textes et fond
+let bright_color = { 'txt': 'rgb(0,0,0)', 'bg': 'rgb(255,255,255)' };
+let dark_color = { 'txt': 'rgb(255,255,255)', 'bg': 'rgb(56,56,56)' };
+let colors = {};
+let classes = {};

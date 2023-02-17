@@ -15,17 +15,27 @@ function toggleDarkMode() {
     toggleClass(document.getElementsByTagName("h5"), 'dark_mode_text');
     toggleClass(document.getElementsByTagName("th"), 'dark_mode_text');
     toggleClass(document.getElementsByTagName("td"), 'dark_mode_text');
+
+    // Profil
+    if (dict_ProfilGeoAdmin['color-mod'] == 'dark') {
+        colors = dark_color;
+        classes = { 'txt': 'dark_mode_text', 'bg': 'dark_mode_bg' };
+    } else {
+        colors = bright_color;
+        classes = { 'txt': '', 'bg': '' };
+    }
+    generateProfil();
 };
 
 // Evenement lorsque le switch est touché
 const checkbox = document.getElementById('switch_dark_mode')
 checkbox.addEventListener('change', (event) => {
-    toggleDarkMode();
     if (event.currentTarget.checked) {
         dict_ProfilGeoAdmin['color-mod'] = 'dark';
     } else {
         dict_ProfilGeoAdmin['color-mod'] = 'bright';
     };
+    toggleDarkMode();
     saveLocalStorage();
 });
 

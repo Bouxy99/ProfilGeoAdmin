@@ -28,10 +28,10 @@ function updateListProfil() {
 
             // https://stackoverflow.com/a/13999956/17248158
             $('#table_profil_save tbody').append(`<tr>
-            <th scope="row">${dateString}</th>
-            <td>${liste_profil[i]['dist']} m</td>
-            <td style="width:5%"><button type="button" class="btn btn-primary btn-sm" aria-haspopup="true" aria-expanded="false" onclick="loadProfil(${i})"><i class="fa fa-eye"></i></button></td>
-            <td style="width:5%"><button type="button" class="btn btn-danger btn-sm" aria-haspopup="true" aria-expanded="false" onclick="deleteSavedProfil(${i})"><i class="fa fa-trash"></i></button></td>
+            <th scope="row" class="${classes.txt}">${dateString}</th>
+            <td class="${classes.txt}"}>${liste_profil[i]['dist']} m</td>
+            <td style="width:5%"><button type="button" class="btn btn-primary btn-sm ${classes.txt}" aria-haspopup="true" aria-expanded="false" onclick="loadProfil(${i})"><i class="fa fa-eye"></i></button></td>
+            <td style="width:5%"><button type="button" class="btn btn-danger btn-sm ${classes.txt}" aria-haspopup="true" aria-expanded="false" onclick="deleteSavedProfil(${i})"><i class="fa fa-trash"></i></button></td>
             </tr>`);
 
         };

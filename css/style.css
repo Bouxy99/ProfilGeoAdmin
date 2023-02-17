@@ -41,9 +41,10 @@
 }
 
 .dark_mode_bg {
-    background-color: #383838 !important;
+    background-color: rgb(56, 56, 56) !important;
 }
 
 .dark_mode_text {
     color: white !important;
+    fill: white !important;
 }
