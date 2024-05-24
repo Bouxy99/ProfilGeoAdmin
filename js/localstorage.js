@@ -4,10 +4,14 @@ function loadLocalStorage() {
 
     // Création si pas encore existant
     if (!dict_ProfilGeoAdmin) {
-        dict_ProfilGeoAdmin = { 'profils': {} }
+        dict_ProfilGeoAdmin = {
+            'profils': {},
+            'color-mod': 'bright'
+        }
     };
 
     updateListProfil();
+    applyColorMod();
 };
 
 // Fonction d'enregistrement dans le localstorage

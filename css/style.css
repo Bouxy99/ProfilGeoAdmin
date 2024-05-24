@@ -25,7 +25,7 @@
     left: 10%;
 }
 
-.avant_gen_profil, .avant_save_profil {
+.avant_gen_profil, #avant_save_profil {
     position: relative;
     left: 5%;
     top : 15px;
@@ -38,4 +38,13 @@
 
 #profil {
     width: 100%;
+}
+
+.dark_mode_bg {
+    background-color: rgb(56, 56, 56) !important;
+}
+
+.dark_mode_text {
+    color: white !important;
+    fill: white !important;
 }

@@ -75,15 +75,20 @@ function processProfilData(profil) {
     layout = {
         hovermode: 'x unified',
         title: 'Profil altimétrique du terrain - swissALTI3D ©swisstopo',
+        font: {
+            color: colors.txt
+        },
         xaxis: { title: 'Distance [m]', showgrid: false, zeroline: false, hovertemplate: 'A', },
-        yaxis: { title: 'Altitude [m]', showline: false, range: [min_y - diff_y * 0.2, max_y + diff_y * 0.2] }
+        yaxis: { title: 'Altitude [m]', showline: false, range: [min_y - diff_y * 0.2, max_y + diff_y * 0.2] },
+        plot_bgcolor: colors.bg,
+        paper_bgcolor: colors.bg
     };
 
     config = {
-        modeBarButtonsToRemove: ['select2d','lasso2d','autoScale2d','zoomIn2d','zoomOut2d']
+        modeBarButtonsToRemove: ['select2d', 'lasso2d', 'autoScale2d', 'zoomIn2d', 'zoomOut2d']
     };
 
-    Plotly.newPlot('profil', data, layout,config);
+    Plotly.newPlot('profil', data, layout, config);
     myPlot = $('#profil');
 
     // Ajout des informations dans le tableau
